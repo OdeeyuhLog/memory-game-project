@@ -7,9 +7,9 @@ interface ScoreDisplayProps {
 
 const ScoreDisplay = ({ score, highScore }: ScoreDisplayProps) => {
 	return (
-		<Group>
-			<Text>Score: {score}</Text>
-			<Text>High Score: {highScore}</Text>
+		<Group ff={"VT323"}>
+			<Text size={"lg"}>Score: {score}</Text>
+			<Text size="lg">High Score: {highScore}</Text>
 		</Group>
 	);
 };

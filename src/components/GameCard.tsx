@@ -1,5 +1,6 @@
-import { Card, Text } from "@mantine/core";
+import { Card, Image, Stack, Text } from "@mantine/core";
 import type { CardType } from "../types/types";
+import Tilt from "react-parallax-tilt";
 
 interface GameCardProps {
 	card: CardType;
@@ -8,16 +9,26 @@ interface GameCardProps {
 
 const GameCard = ({ card, onClick }: GameCardProps) => {
 	return (
-		<Card
-			shadow="md"
-			padding="lg"
-			radius="md"
-			withBorder
-			onClick={() => onClick(card.id)}
-			style={{ cursor: "pointer", textAlign: "center" }}
-		>
-			<Text size="xl">{card.content}</Text>
-		</Card>
+		<Tilt>
+			<Card
+				shadow="md"
+				padding="lg"
+				radius="md"
+				withBorder
+				onClick={() => onClick(card.id)}
+				style={{
+					cursor: "pointer",
+					textAlign: "center",
+				}}
+			>
+				<Stack gap={2} align="center">
+					<Image src={card.pokemon.url} w={110} />
+					<Text size="lg" tt="capitalize" ff={"VT323"}>
+						{card.pokemon.name}
+					</Text>
+				</Stack>
+			</Card>
+		</Tilt>
 	);
 };
 

@@ -1,5 +1,5 @@
 import { Grid } from "@mantine/core";
-import { CardType } from "../types/types";
+import type { CardType } from "../types/types";
 import GameCard from "./GameCard";
 
 interface GameBoardProps {
@@ -9,7 +9,7 @@ interface GameBoardProps {
 
 const GameBoard = ({ cards, onCardClick }: GameBoardProps) => {
 	return (
-		<Grid>
+		<Grid w={"70%"}>
 			{cards.map((card) => (
 				<Grid.Col key={card.id} span={3}>
 					<GameCard card={card} onClick={onCardClick} />

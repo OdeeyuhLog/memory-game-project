@@ -1,14 +1,22 @@
-import { useState } from "react";
-import { CardType, GameState } from "../types/types";
+import { useEffect, useState } from "react";
+import type { CardType, GameState, Pokemon } from "../types/types";
 
-const useGameLogic = (initialCards: CardType[]) => {
-	const [cards, setCards] = useState<CardType[]>(initialCards);
+const useGameLogic = (initialCards: Pokemon[]) => {
+	const [cards, setCards] = useState<CardType[]>([]);
 	const [gameState, setGameState] = useState<GameState>({
 		score: 0,
 		highScore: 0,
 		selectedCardIds: new Set(),
 		gameOver: false,
 	});
+
+	useEffect(() => {
+		const newCards = initialCards.map((pokemon, index) => ({
+			id: index,
+			pokemon,
+		}));
+		setCards(newCards);
+	}, [initialCards]);
 
 	const shuffleCards = () => {
 		setCards((prevCards) => [...prevCards].sort(() => Math.random() - 0.5));

@@ -1,6 +1,12 @@
 interface CardType {
 	id: number;
-	content: string;
+	pokemon: Pokemon;
+}
+
+interface Pokemon {
+	id: number;
+	name: string;
+	url: string;
 }
 
 interface GameState {
@@ -10,4 +16,4 @@ interface GameState {
 	gameOver: boolean;
 }
 
-export type { CardType, GameState };
+export type { CardType, GameState, Pokemon };
